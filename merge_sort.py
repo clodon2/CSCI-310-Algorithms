@@ -1,9 +1,16 @@
 """
 Corey Verkouteren
-8/28/24
+8/28/24 9/4/2024
 Merge Sort Algorithm (nlogn) split array, sort while merging, recursion
 """
 def merge_sort(array, start, end):
+    """
+    dividing step of the sort
+    :param array: a list to be sorted
+    :param start: first index to start sorting at
+    :param end: last index to start sorting at
+    :return:
+    """
     # if array is empty or one element, end recursion (list is sorted/smallest)
     if start >= end:
         return
@@ -19,15 +26,25 @@ def merge_sort(array, start, end):
     # sort each side of the new split array
     merge(array, start, mid, end)
 
+    return array
+
 
 def merge(array, start, mid, end):
+    """
+    conquering/combining step
+    :param array: whole array (split by start/mid/end)
+    :param start: starting index of subarray
+    :param mid: middle index of subarray
+    :param end: last index of subarray
+    :return:
+    """
     # get lengths of left and right arrays
-    l_length = mid - start
+    l_length = mid - start + 1
     r_length = end - mid
 
-    # create left and right arrays
-    l_array = array[start:mid]
-    r_array = array[mid:(end + 1)]
+    # create left and right arrays, splitting so uneven arrays have a larger left array
+    l_array = array[start:mid + 1]
+    r_array = array[mid + 1:(end + 1)]
 
     # used to iterate through arrays, l is for left, r for right, k for original
     l = 0
@@ -59,14 +76,3 @@ def merge(array, start, mid, end):
         array[k] = r_array[r]
         r += 1
         k += 1
-
-    # debugging print for final sorted subarray
-    print(array)
-
-
-test = [8, 2, 3, 4, 10, 6, 7, 8, 9]
-
-merge_sort(test, 0, 9)
-
-print(test)
-
