@@ -51,8 +51,6 @@ def merge(array, start, mid, end):
     r = 0
     k = start
 
-    # debugging print
-    print(l, l_length, l_array, r, r_length, r_array, "    ", array, start, mid, end)
     # while within bounds of both lists
     while l < l_length and r < r_length:
         # if element in left array is bigger, sort it into the original array in current subarray position
