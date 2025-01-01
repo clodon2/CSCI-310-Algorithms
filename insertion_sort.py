@@ -17,7 +17,7 @@ def insertion_sort(array):
         # j becomes element before key in the array (the most recently sorted item)
         j = i - 1
 
-        # if previous element in heap (j) is bigger than key
+        # if previous element in list (j) is bigger than key
         while j > -1 and array[j] > key:
             # move the bigger element to right (j)
             array[j + 1] = array[j]

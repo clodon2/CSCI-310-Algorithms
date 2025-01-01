@@ -4,7 +4,7 @@ Corey Verkouteren
 Quick Sort Algorithm Θ(nlogn) expected
 """
 def quick_sort(array: list[int], start: int = 0, end: int = 0):
-    # default to sort whole heap
+    # default to sort whole list
     if not end:
         end = len(array) - 1
 

@@ -6,21 +6,21 @@ Merge Sort Algorithm (nlogn) split array, sort while merging, recursion
 def merge_sort(array, start, end):
     """
     dividing step of the sort
-    :param array: a heap to be sorted
+    :param array: a list to be sorted
     :param start: first index to start sorting at
     :param end: last index to start sorting at
     :return:
     """
-    # if array is empty or one element, end recursion (heap is sorted/smallest)
+    # if array is empty or one element, end recursion (list is sorted/smallest)
     if start >= end:
         return
 
-    # get midpoint of heap
+    # get midpoint of list
     mid = (start + end) // 2
 
-    # divide left side of heap
+    # divide left side of list
     merge_sort(array, start, mid)
-    # divide right side of heap
+    # divide right side of list
     merge_sort(array, mid + 1, end)
 
     # sort each side of the new split array
