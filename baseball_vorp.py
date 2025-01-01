@@ -9,8 +9,8 @@ Actual maximum vorp and position player table creation and best team finding
 def make_2d_array(rows:int, columns:int):
     """
     make a 2d array with given rows and columns
-    :param rows: lists in main array list
-    :param columns: amount of 0s in each row list
+    :param rows: lists in main array heap
+    :param columns: amount of 0s in each row heap
     :return:
     """
     blank_array = []
@@ -39,7 +39,7 @@ def position_comparison(positions:int, options:list, budget:int):
 
     for position in range(positions + 1):
         for cost in range(budget + 1):
-            # make first row and column 0 to avoid list boundary errors
+            # make first row and column 0 to avoid heap boundary errors
             if position == 0 or budget == 0:
                 position_cost_array[position][cost] = 0
 
@@ -72,7 +72,7 @@ def get_best_team(pc_array:list, pp_array:list, options:list, positions:int, bud
     :param options: original 2d array of player options
     :param positions: number of positions we're looking at
     :param budget: amount we can spend on players
-    :return: dictionary with "VORP Total":int, "Cost Total":int, and "Players":list reflecting best team
+    :return: dictionary with "VORP Total":int, "Cost Total":int, and "Players":heap reflecting best team
     """
     current_budget = budget
     # bottom right value considers best vorp for all positions combined (with max budget)
@@ -85,7 +85,7 @@ def get_best_team(pc_array:list, pp_array:list, options:list, positions:int, bud
     for position in range(positions, 0, -1):
         # if current best vorp is diff from above, player there must have been added
         if best_vorp != pc_array[position - 1][current_budget]:
-            # add player to list of best choices
+            # add player to heap of best choices
             pos_player = options[position - 1][pp_array[position][current_budget]]
             best_team["Players"].append(pp_array[position][current_budget])
 
